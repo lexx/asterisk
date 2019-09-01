@@ -10,5 +10,5 @@ systemctl start chronyd
 systemctl enable chronyd
 systemctl status chronyd
 
-yum -y install php-pear mc epel-release dh ncdu net-tools
+yum -y install php-pear mc epel-release ncdu net-tools
 date
