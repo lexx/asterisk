@@ -1,8 +1,9 @@
 # Easy install FreePBX on VPS with Cent OS
 <h3>Pre-requsites</h3>
 <ul>
-<li>SELinux is disabled (https://serveradmin.ru/centos-7-nastroyka-servera/#_CentOS_7)</li>
+<li>SELinux is <a href="https://serveradmin.ru/centos-7-nastroyka-servera/#_CentOS_7">disabled</a></li>
 <li>CentOS 7</li>
+<li><a href="https://serveradmin.ru/nastroyka-servera-telefonii-asterisk-s-nulya/#i-3">Asterisk</a> setup</li>
 </ul>
 <h3>Lets get started</h3>
 
