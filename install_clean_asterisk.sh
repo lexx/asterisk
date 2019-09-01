@@ -58,6 +58,8 @@ make menuselect
 make
 make install
 make config
+cd /usr/src/asterisk*
+make samples
 ldconfig
 chkconfig asterisk off
 
@@ -88,4 +90,4 @@ sed -i 's/\(^upload_max_filesize = \).*/\120M/' /etc/php.ini
 sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/httpd/conf/httpd.conf
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
 systemctl restart httpd.service
-./start_asterisk start
+service asterisk start
