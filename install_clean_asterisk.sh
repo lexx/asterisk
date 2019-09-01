@@ -11,85 +11,58 @@ systemctl enable mariadb.service
 
 # Start MariaDB
 systemctl start mariadb
-
 mysql_secure_installation
-
 systemctl enable httpd.service
 systemctl start httpd.service
 
+# Asterisk
 adduser asterisk -M -c "Asterisk User"
-
-# Download Asterisk
 cd /usr/src
-wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
-wget http://downloads.asterisk.org/pub/telephony/libpri/libpri-current.tar.gz
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
-wget -O jansson.tar.gz https://github.com/akheron/jansson/archive/v2.7.tar.gz
-wget http://www.pjsip.org/release/2.4/pjproject-2.4.tar.bz2
-
-cd /usr/src
-tar -xjvf pjproject-2.4.tar.bz2
-rm -f pjproject-2.4.tar.bz2
-cd pjproject-2.4
-CFLAGS='-DPJ_HAS_IPV6=1' ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr --libdir=/usr/lib64
-make dep
-make
+wget http://sourceforge.net/projects/lame/files/lame/3.98.4/lame-3.98.4.tar.gz &&
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
+tar zxvf lame-3.98.4.tar.gz &&
+cd lame-3.98.4 &&
+./configure &&
+make &&
 make install
 
 cd /usr/src
-tar vxfz jansson.tar.gz
-rm -f jansson.tar.gz
-cd jansson-*
-autoreconf -i
-./configure --libdir=/usr/lib64
-make
-make install
-
-# Install Asterisk
-cd /usr/src
-tar xvfz asterisk-13-current.tar.gz
-rm -f asterisk-13-current.tar.gz
+tar xvfz asterisk-15-current.tar.gz
+rm -f asterisk-15-current.tar.gz
 cd asterisk-*
 contrib/scripts/install_prereq install
 contrib/scripts/get_mp3_source.sh
 ./configure --with-pjproject-bundled --with-jansson-bundled
 make menuselect
-
-chown asterisk. /var/run/asterisk
-chown -R asterisk. /etc/asterisk
-chown -R asterisk. /var/{lib,log,spool}/asterisk
-chown -R asterisk. /usr/lib64/asterisk
-chown -R asterisk. /var/www/
-mkdir /usr/local/etc/asterisk
-mkdir /usr/local/share/asterisk
-chmod -R 755 /usr/local/etc/asterisk
-chown -R asterisk:asterisk /usr/local/etc/asterisk
-chown -R asterisk:asterisk /usr/local/share/asterisk
-
 make
 make install
-make config
-cd /usr/src/asterisk*
 make samples
+make config
 ldconfig
 chkconfig asterisk 
 
 # Download Asterisk Sounds
-cd /var/lib/asterisk/sounds
-wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-ru-wav-current.tar.gz
-wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-extra-sounds-en-wav-current.tar.gz
-tar xfz asterisk-core-sounds-ru-wav-current.tar.gz
-rm -f asterisk-core-sounds-ru-wav-current.tar.gz
-tar xfz asterisk-extra-sounds-en-wav-current.tar.gz
+cd /var/lib/asterisk/sounds &&
+wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-ru-wav-current.tar.gz &&
+wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-extra-sounds-en-wav-current.tar.gz &&
+tar xfz asterisk-core-sounds-ru-wav-current.tar.gz &&
+rm -f asterisk-core-sounds-ru-wav-current.tar.gz &&
+tar xfz asterisk-extra-sounds-en-wav-current.tar.gz &&
 rm -f asterisk-extra-sounds-en-wav-current.tar.gz
 
 # Wideband Audio download
-wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-ru-g722-current.tar.gz
-wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-extra-sounds-en-g722-current.tar.gz
-tar xfz asterisk-extra-sounds-en-g722-current.tar.gz
-rm -f asterisk-extra-sounds-en-g722-current.tar.gz
-tar xfz asterisk-core-sounds-ru-g722-current.tar.gz
+wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-ru-g722-current.tar.gz &&
+wget http://downloads.asterisk.org/pub/telephony/sounds/asterisk-extra-sounds-en-g722-current.tar.gz &&
+tar xfz asterisk-extra-sounds-en-g722-current.tar.gz &&
+rm -f asterisk-extra-sounds-en-g722-current.tar.gz &&
+tar xfz asterisk-core-sounds-ru-g722-current.tar.gz &&
 rm -f asterisk-core-sounds-ru-g722-current.tar.gz
+
+chown asterisk. /var/run/asterisk &&
+chown -R asterisk. /etc/asterisk &&
+chown -R asterisk. /var/{lib,log,spool}/asterisk &&
+chown -R asterisk. /usr/lib/asterisk &&
+chown -R asterisk. /var/www/
 
 sed -i 's/\(^upload_max_filesize = \).*/\120M/' /etc/php.ini
 sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/httpd/conf/httpd.conf
