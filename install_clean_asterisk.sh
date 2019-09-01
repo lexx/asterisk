@@ -39,7 +39,7 @@ make install
 make samples
 make config
 ldconfig
-chkconfig asterisk 
+chkconfig asterisk on
 
 # Download Asterisk Sounds
 cd /var/lib/asterisk/sounds &&
