@@ -6,7 +6,7 @@
 <li><a href="https://serveradmin.ru/nastroyka-servera-telefonii-asterisk-s-nulya/#i-3">Asterisk</a> setup</li>
 </ul>
 <h3>Lets get started</h3>
-1. <code>yum -y install wget</code>
+1. <code>yum -y install wget</code></br>
 2. Tuning when you first start a clean system<br>
 <code>wget https://raw.githubusercontent.com/lexx/asterisk/master/first_run.sh</code><br>
 <code>sh first_run.sh</code><br>
