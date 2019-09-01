@@ -31,8 +31,7 @@ cd /usr/src
 tar -xjvf pjproject-2.4.tar.bz2
 rm -f pjproject-2.4.tar.bz2
 cd pjproject-2.4
-CFLAGS='-DPJ_HAS_IPV6=1' ./configure --prefix=/usr --enable-shared --disable-sound\
-  --disable-resample --disable-video --disable-opencore-amr --libdir=/usr/lib64
+CFLAGS='-DPJ_HAS_IPV6=1' ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr --libdir=/usr/lib64 --with-pjproject-bundled
 make dep
 make
 make install
