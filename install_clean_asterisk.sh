@@ -55,6 +55,17 @@ contrib/scripts/install_prereq install
 contrib/scripts/get_mp3_source.sh
 make menuselect
 
+chown asterisk. /var/run/asterisk
+chown -R asterisk. /etc/asterisk
+chown -R asterisk. /var/{lib,log,spool}/asterisk
+chown -R asterisk. /usr/lib64/asterisk
+chown -R asterisk. /var/www/
+mkdir /usr/local/etc/asterisk
+mkdir /usr/local/share/asterisk
+chmod -R 755 /usr/local/etc/asterisk
+chown -R asterisk:asterisk /usr/local/etc/asterisk
+chown -R asterisk:asterisk /usr/local/share/asterisk
+
 make
 make install
 make config
@@ -79,12 +90,6 @@ tar xfz asterisk-extra-sounds-en-g722-current.tar.gz
 rm -f asterisk-extra-sounds-en-g722-current.tar.gz
 tar xfz asterisk-core-sounds-ru-g722-current.tar.gz
 rm -f asterisk-core-sounds-ru-g722-current.tar.gz
-
-chown asterisk. /var/run/asterisk
-chown -R asterisk. /etc/asterisk
-chown -R asterisk. /var/{lib,log,spool}/asterisk
-chown -R asterisk. /usr/lib64/asterisk
-chown -R asterisk. /var/www/
 
 sed -i 's/\(^upload_max_filesize = \).*/\120M/' /etc/php.ini
 sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/httpd/conf/httpd.conf
