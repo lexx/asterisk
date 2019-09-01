@@ -1,7 +1,8 @@
 yum -y update
-yum -y groupinstall core base "Development Tools"
-yum -y install lynx mariadb-server mariadb php php-mysql php-mbstring tftp-server httpd ncurses-devel sendmail sendmail-cf sox newt-devel libxml2-devel libtiff-devel audiofile-devel gtk2-devel subversion kernel-devel git php-process crontabs cronie cronie-anacron wget vim php-xml uuid-devel sqlite-devel net-tools gnutls-devel php-pear
+yum -y install epel-release
+yum -y install lynx mariadb-server mariadb php php-mysql php-mbstring tftp-server httpd ncurses-devel sendmail sendmail-cf sox newt-devel libxml2-devel libtiff-devel audiofile-devel gtk2-devel subversion kernel-devel git php-process crontabs cronie cronie-anacron wget vim php-xml uuid-devel sqlite-devel net-tools gnutls-devel php-pear phpmyadmin
 pear install Console_Getopt
+yum -y groupinstall core base "Development Tools"
 
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
@@ -17,16 +18,21 @@ systemctl start httpd.service
 
 # Asterisk
 adduser asterisk -M -c "Asterisk User"
+mkdir /usr/local/etc/asterisk
+mkdir /usr/local/share/asterisk
+chmod -R 755 /usr/local/etc/asterisk
+chown -R asterisk:asterisk /usr/local/etc/asterisk
+chown -R asterisk:asterisk /usr/local/share/asterisk
 cd /usr/src
-wget http://sourceforge.net/projects/lame/files/lame/3.98.4/lame-3.98.4.tar.gz &&
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
+wget http://sourceforge.net/projects/lame/files/lame/3.98.4/lame-3.98.4.tar.gz
+cd lame-*
 tar zxvf lame-3.98.4.tar.gz &&
 cd lame-3.98.4 &&
 ./configure &&
 make &&
 make install
-
 cd /usr/src
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
 tar xvfz asterisk-15-current.tar.gz
 rm -f asterisk-15-current.tar.gz
 cd asterisk-*
