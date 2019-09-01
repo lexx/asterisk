@@ -31,7 +31,7 @@ cd /usr/src
 tar -xjvf pjproject-2.4.tar.bz2
 rm -f pjproject-2.4.tar.bz2
 cd pjproject-2.4
-CFLAGS='-DPJ_HAS_IPV6=1' ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr --libdir=/usr/lib64 --with-pjproject-bundled
+CFLAGS='-DPJ_HAS_IPV6=1' ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr --libdir=/usr/lib64
 make dep
 make
 make install
@@ -51,7 +51,7 @@ tar xvfz asterisk-13-current.tar.gz
 rm -f asterisk-13-current.tar.gz
 cd asterisk-*
 contrib/scripts/install_prereq install
-./configure --libdir=/usr/lib64
+./configure --libdir=/usr/lib64 --with-pjproject-bundled
 contrib/scripts/get_mp3_source.sh
 make menuselect
 
