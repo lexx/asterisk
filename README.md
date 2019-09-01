@@ -13,7 +13,7 @@
 3. First we need to clone/get the script found in github repo<br>
 <code>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_clean_asterisk.sh</code><br>
 OR<br>
-<code>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_freepbx.sh</code><br><br>
+<code>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_freepbx.sh</code><br>
 4. Next, run the script<br>
 <code>sh install_clean_asterisk.sh</code><br>
 OR<br>
