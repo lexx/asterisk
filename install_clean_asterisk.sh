@@ -51,8 +51,8 @@ tar xvfz asterisk-13-current.tar.gz
 rm -f asterisk-13-current.tar.gz
 cd asterisk-*
 contrib/scripts/install_prereq install
-./configure --libdir=/usr/lib64 --with-pjproject-bundled
 contrib/scripts/get_mp3_source.sh
+./configure --with-pjproject-bundled --with-jansson-bundled
 make menuselect
 
 chown asterisk. /var/run/asterisk
@@ -72,7 +72,7 @@ make config
 cd /usr/src/asterisk*
 make samples
 ldconfig
-chkconfig asterisk off
+chkconfig asterisk 
 
 # Download Asterisk Sounds
 cd /var/lib/asterisk/sounds
