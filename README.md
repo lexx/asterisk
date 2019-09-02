@@ -9,15 +9,13 @@
 1. <code>yum -y install wget</code></br>
 2. Tuning when you first start a clean system<br>
 <pre>wget https://raw.githubusercontent.com/lexx/asterisk/master/first_run.sh &&
-sh first_run.sh</pre><br>
-3. First we need to clone/get the script found in github repo<br>
-<code>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_clean_asterisk.sh</code><br>
-OR<br>
-<code>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_freepbx.sh</code><br>
-4. Next, run the script<br>
-<code>sh install_clean_asterisk.sh</code><br>
-OR<br>
-<code>sh install_freepbx.sh</code><br>
+sh first_run.sh</pre>
+3. First we need to clone/get the script found in github repo and run the script<br>
+<pre>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_clean_asterisk.sh &&
+sh install_clean_asterisk.sh</pre>
+OR
+<pre>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_freepbx.sh &&
+sh install_freepbx.sh</pre>
 The Script will run for a bit, afterwards, choose your options for MariaDB - <b>DO NOT USE A ROOT PASSWORD</b>.<br>
 The Script will run for a bit more, you then will be able to choose if you would like any more Asterisk modules to be installed.<br><br>
 The script will then finish and you can browse to the FreePBX WebGUI using the droplet IP address.
