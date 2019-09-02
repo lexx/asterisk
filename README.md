@@ -8,7 +8,7 @@
 <h3>Lets get started</h3>
 1. <code>yum -y install wget</code></br>
 2. Tuning when you first start a clean system<br>
-<code>wget https://raw.githubusercontent.com/lexx/asterisk/master/first_run.sh</code><br>
+<code>wget https://raw.githubusercontent.com/lexx/asterisk/master/first_run.sh &&</code><br>
 <code>sh first_run.sh</code><br>
 3. First we need to clone/get the script found in github repo<br>
 <code>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_clean_asterisk.sh</code><br>
