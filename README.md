@@ -7,10 +7,10 @@
 </ul>
 <h3>Lets get started</h3>
 1. <code>yum -y install wget</code></br>
-2. Tuning when you first start a clean system<br>
+2. Tuning when you first start a clean system
 <pre>wget https://raw.githubusercontent.com/lexx/asterisk/master/first_run.sh &&
 sh first_run.sh</pre>
-3. First we need to clone/get the script found in github repo and run the script<br>
+3. First we need to clone/get the script found in github repo and run the script
 <pre>wget https://raw.githubusercontent.com/lexx/asterisk/master/install_clean_asterisk.sh &&
 sh install_clean_asterisk.sh</pre>
 OR
